@@ -6,6 +6,8 @@ class PixabayAPI:
   def __init__(self, key, carpeta_imagenes):
     self.key = key
     self.carpeta_imagenes = carpeta_imagenes
+    self.imagenes=[]
+    
     
   def buscar_imagenes(self, query, cantidad):
     # URL de búsqueda. Ver la documentación en https://pixabay.com/api/docs/#api_search_images
@@ -54,3 +56,4 @@ class PixabayAPI:
     ruta_archivo = os.path.join(self.carpeta_imagenes, nombre_imagen)
     with open(ruta_archivo, 'wb') as archivo:
       archivo.write(bytes_imagen.content)
+    self.imagenes.append(ruta_archivo)
